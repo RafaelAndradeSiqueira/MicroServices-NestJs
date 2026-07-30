@@ -23,7 +23,7 @@ export class UsersService {
     async create(body: CreateUserDto){
         const startedAt = Date.now();
 
-        this.logger.info({ email: body.email }, 'creating user');
+        this.logger.info({ email: body.email }, 'criando usuário');
 
         const user = await this.repository.create(body);
 
@@ -39,12 +39,12 @@ export class UsersService {
 
             this.logger.info(
                 { userId: user.id, durationMs: Date.now() - startedAt },
-                'user created and event published',
+                'usuário criado e evento publicado',
             );
 
             return user;
         }
-        this.logger.warn({ email: body.email }, 'user was not created (empty result)');
+        this.logger.warn({ email: body.email }, 'usuário não foi criado (resultado vazio)');
     }
 
     async update(id: string, body: UpdateUserDto){
@@ -53,5 +53,9 @@ export class UsersService {
 
     async delete(id: string){
         return await this.repository.delete(id)
+    }
+
+    async deleteAll(){
+        return await this.repository.deleteAll();
     }
 }

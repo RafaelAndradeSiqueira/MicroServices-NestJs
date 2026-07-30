@@ -29,4 +29,9 @@ export class UsersController{
     async delete(@Param('id') id: string) {
         return await this.UsersService.delete(id);
     }
+
+    @Delete()
+    async deleteAll(){
+        return await this.UsersService.deleteAll();
+    }
 }

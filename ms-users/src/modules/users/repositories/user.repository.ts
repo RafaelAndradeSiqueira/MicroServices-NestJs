@@ -39,4 +39,8 @@ export class UsersRepository{
     async delete(id: string) {
         return await this.prismaService.users.delete({ where: { id } });
     }
+
+    async deleteAll(){
+        return await this.prismaService.users.deleteMany()
+    }
 }

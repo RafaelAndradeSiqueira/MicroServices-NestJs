@@ -1,5 +1,3 @@
-// src/rabbitmq/rabbitmq.provider.ts
-
 import { ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 

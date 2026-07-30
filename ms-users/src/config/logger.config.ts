@@ -18,6 +18,10 @@ export const loggerConfig: Params = {
 
     quietReqLogger: true,
 
+    autoLogging: {
+      ignore: (req: IncomingMessage) => req.url === '/metrics',
+    },
+
     redact: {
       paths: ['req.headers.authorization', 'req.headers.cookie', '*.password'],
       censor: '[REDACTED]',

@@ -1,9 +1,13 @@
+import { IncomingMessage } from 'http';
 import { Params } from 'nestjs-pino';
 
 export const loggerConfig: Params = {
   pinoHttp: {
     base: { service: 'ms-email' },
     level: process.env.LOG_LEVEL ?? 'info',
+    autoLogging: {
+      ignore: (req: IncomingMessage) => req.url === '/metrics',
+    },
 
     transport: {
       targets: [
